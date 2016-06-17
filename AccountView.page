@@ -1,0 +1,20 @@
+<apex:page controller="ControllerForAccountView">
+      <apex:form id="changePrivacyForm">
+        <apex:pageBlock >
+             <apex:pageBlockTable value="{!wrappList}"  var="item">
+                <apex:column headerValue="isSelected">
+                    <apex:inputCheckbox value="{!item.isSelected}"/>
+                </apex:column>
+                <apex:column headerValue="Name" value="{!item.name}"/>
+            </apex:pageBlockTable>
+            <apex:commandButton action="{!processWrapps}" value="Select" rerender="out"/>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:pageBlock id="out">
+        <apex:pageBlockSection >
+            <apex:pageBlockTable value="{!myResults}" var="acc">
+            	<apex:column headerValue="Selected Accounts" value="{!acc.name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
